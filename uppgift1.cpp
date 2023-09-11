@@ -24,13 +24,18 @@ int main() {
     if (age >= ageFifteen){
         price = eighty_SEK;
     }
-    //checks if the owner is over below 15 and at least 8, and if true then prints the correct price corresponding to that age.
+    //checks if the owner is below 15 and at least 8, and if true then prints the correct price corresponding to that age.
     else if (age < ageFifteen && age >= ageEight){
         price = thirty_SEK;
     }
     //if all the above is false then the owner must be below 8 and therefor the ticket is free.
+    else if(age > 0){
+        std::cout << "The football match ticket is free!" << std::endl;
+        price = 0;
+        return 0;
+    }
     else {
-        std::cout << " The football match ticket is free!" << std::endl;
+        std::cout << "False age" << std::endl;
         return 0;
     }
     
