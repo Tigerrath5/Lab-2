@@ -69,8 +69,26 @@ int main() {
         }
     }
     else{
-        std::cout << "Point (" << x << ", " << y << ") DOES NOT! Belong to line y = " << m << "x + " << b << std::endl;
-        return 0;
+        if (m > 1 || m < 0){
+            if (b < 0){
+                std::cout << "Point (" << x << ", " << y << ") DOES NOT! Belong to line y = " << m << "x - " << abs(b) << std::endl;
+                return 0;
+            }
+            if (b > 0){
+                std::cout << "Point (" << x << ", " << y << ") DOES NOT! Belong to line y = " << m << "x + " << b << std::endl;
+                return 0;
+            }
+        }
+        else if (m == 1){
+            if (b < 0){
+                std::cout << "Point (" << x << ", " << y << ") DOES NOT! Belong to line y = " << "x - " << abs(b) << std::endl;
+                return 0;
+            }
+            if (b > 0){
+                std::cout << "Point (" << x << ", " << y << ") DOES NOT! Belong to line y = " << "x + " << b << std::endl;
+                return 0;
+            }
+        }
+        
     }
 }
-
