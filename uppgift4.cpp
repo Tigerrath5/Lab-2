@@ -6,6 +6,7 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 int main() {
     //Initilized variables
@@ -49,21 +50,24 @@ int main() {
     //Checks if the arrival minut is over or equal to 60 min and if true converts the 60 min to 1h and the rest value will be the new value for the arrival minut.
     if (min_arrival >= 60){
         h_arrival += 1;
-        int min_trueArrival = min_arrival - 60;
+        /*int min_trueArrival = min_arrival - 60;
         min_arrival = 0;
-        min_arrival += min_trueArrival;
+        min_arrival += min_trueArrival;*/
+        min_arrival = min_arrival % 60; // more effective to get the rest from modulus
     }
     //Calculates the arrival hour
     h_arrival += h_departure + h_duration;
     //Checks if the arrival hour is over or equal to 24 hours and if true converts the string Arrival to tomorrow and the rest value will be the new value for the arrival hour.
     if (h_arrival > oneDay){
         Arrival = "tomorrow";
-        int h_trueArrival = h_arrival - oneDay;
+        /*int h_trueArrival = h_arrival - oneDay;
         h_arrival = 0;
-        h_arrival += h_trueArrival;
+        h_arrival += h_trueArrival;*/
+        h_arrival = h_arrival % oneDay; // more effective to get the rest from modulus
     }
     
     //Prints the arrival time
-    std::cout << "Arrival time: "  << Arrival << " at " << h_arrival << ":" << min_arrival << std::endl;
+    std::cout << "Arrival time: "  << Arrival << " at " << std::setfill('0') << std::setw(2)
+    << h_arrival << ":" << std::setw(2) << min_arrival << std::endl; //setw adds space before a char, and setfill can fill that space with a given char. 
     return 0;
 }
