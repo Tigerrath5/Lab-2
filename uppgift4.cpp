@@ -23,15 +23,8 @@ int main() {
     //User input
     std::cin >> h_departure >> min_departure;
     
-    //Checks if user input is valid for the departure hour
-    if (h_departure >= oneDay){
-        h_departure = 0;
-        min_departure = 0;
-        std::cout << "ERROR! INVALID NUMBER!\n"  << std::endl;
-        return 0;
-    }
-    //Checks if user input is valid for the departure minut
-    if (min_departure >= 60 || min_departure < 0){
+    //Checks if user input is valid for the departure time
+    if (h_departure >= oneDay || min_departure >= 60 || min_departure < 0){
         h_departure = 0;
         min_departure = 0;
         std::cout << "ERROR! INVALID NUMBER!\n"  << std::endl;
@@ -43,21 +36,14 @@ int main() {
     //User input
     std::cin >> h_duration >> min_duration;
     
-    //Checks if user input is valid for the duration hour
-    if (h_duration >= oneDay){
+    //Checks if user input is valid for the duration
+    if (h_duration >= oneDay || min_duration >= 60 || min_duration < 0){
         h_duration = 0;
         min_duration = 0;
         std::cout << "ERROR! INVALID NUMBER!\n"  << std::endl;
         return 0;
     }
-    //Checks if user input is valid for the duration minut
-    if (min_duration >= 60 || min_duration < 0){
-        h_duration = 0;
-        min_duration = 0;
-        std::cout << "ERROR! INVALID NUMBER!\n"  << std::endl;
-        return 0;
-    }
-    
+
     //Calculates the arrival minut
     min_arrival += min_departure + min_duration;
     //Checks if the arrival minut is over or equal to 60 min and if true converts the 60 min to 1h and the rest value will be the new value for the arrival minut.
@@ -81,4 +67,3 @@ int main() {
     std::cout << "Arrival time: "  << Arrival << " at " << h_arrival << ":" << min_arrival << std::endl;
     return 0;
 }
-
